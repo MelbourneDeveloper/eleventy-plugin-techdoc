@@ -1,0 +1,44 @@
+---
+layout: layouts/base.njk
+---
+
+{% set langPrefix = "/" + lang if lang and lang != defaultLanguage else "" %}
+
+<div class="docs-layout">
+  <aside class="sidebar" id="docs-sidebar">
+    {% if navigation.api %}
+    <div class="sidebar-section">
+      <h4>{{ "nav.apiReference" | t(lang) }}</h4>
+      <ul>
+        {% for item in navigation.api %}
+        <li>
+          <a href="{{ item.url }}" {% if page.url == item.url %}class="active"{% endif %}>
+            {{ item.text }}
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+
+    {% if navigation.docs %}
+    <div class="sidebar-section">
+      <h4>{{ "nav.docs" | t(lang) }}</h4>
+      <ul>
+        {% for section in navigation.docs %}
+        {% for item in section.items | limit(3) %}
+        <li>
+          <a href="{{ item.url }}">{{ item.text }}</a>
+        </li>
+        {% endfor %}
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+  </aside>
+
+  <article class="docs-content">
+    <h1>{{ title }}</h1>
+    {{ content | safe }}
+  </article>
+</div>

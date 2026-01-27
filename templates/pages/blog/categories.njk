@@ -1,0 +1,30 @@
+---
+layout: layouts/base.njk
+title: Categories
+permalink: /blog/categories/
+---
+<div class="blog-container">
+  <header class="blog-header">
+    <h1>{{ "blog.categoriesTitle" | t(lang) | default("Categories") }}</h1>
+    <p class="blog-subtitle">{{ "blog.categoriesDescription" | t(lang) | default("Browse blog posts by category.") }}</p>
+  </header>
+
+  <div class="category-grid">
+    {%- set categoryCollection = collections.categoryList %}
+    {%- if lang and lang != defaultLanguage %}
+      {%- set categoryCollection = collections[lang + "categoryList"] | default(collections.categoryList) %}
+    {%- endif %}
+    {% for category in categoryCollection %}
+    <a href="{% if lang and lang != defaultLanguage %}/{{ lang }}{% endif %}/blog/categories/{{ category | slugify }}/" class="category-card">
+      <h3>{{ category | capitalize }}</h3>
+      <p>{{ collections.postsByCategory[category] | length | default(0) }} {{ "blog.post" | t(lang) | default("post") }}{% if collections.postsByCategory[category] | length != 1 %}s{% endif %}</p>
+    </a>
+    {% endfor %}
+  </div>
+
+  {% if categoryCollection | length == 0 %}
+  <div class="blog-empty">
+    <p>{{ "blog.noCategories" | t(lang) | default("No categories yet. Check back soon!") }}</p>
+  </div>
+  {% endif %}
+</div>

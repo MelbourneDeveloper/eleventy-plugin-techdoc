@@ -1,0 +1,39 @@
+---
+pagination:
+  data: collections.tagList
+  size: 1
+  alias: tag
+permalink: /blog/tags/{{ tag | slugify }}/
+layout: layouts/base.njk
+eleventyComputed:
+  title: "Posts tagged '{{ tag }}'"
+  description: "All blog posts tagged with {{ tag }}."
+---
+<div class="blog-container">
+  <header class="blog-header">
+    <h1>{{ "blog.postsTagged" | t(lang) | default("Posts tagged") }} "{{ tag }}"</h1>
+    <p><a href="{% if lang and lang != defaultLanguage %}/{{ lang }}{% endif %}/blog/tags/">← {{ "blog.allTags" | t(lang) | default("All tags") }}</a></p>
+  </header>
+
+  <div class="post-list">
+    {% for post in collections.postsByTag[tag] %}
+    <article class="blog-post">
+      <a href="{{ post.url }}" class="post-title">{{ post.data.title }}</a>
+      <div class="post-meta">
+        <time datetime="{{ post.date | isoDate }}">{{ post.date | dateFormat(lang) }}</time>
+        {% if post.data.author %} · {{ post.data.author }}{% endif %}
+      </div>
+      {% if post.data.excerpt or post.data.description %}<p class="post-excerpt">{{ post.data.excerpt | default(post.data.description) }}</p>{% endif %}
+      {% if post.data.tags %}
+      <div class="post-tags">
+        {% for t in post.data.tags %}
+        {% if t != 'post' and t != 'posts' %}
+        <a href="{% if lang and lang != defaultLanguage %}/{{ lang }}{% endif %}/blog/tags/{{ t | slugify }}/" class="tag {% if t == tag %}tag-active{% endif %}">{{ t }}</a>
+        {% endif %}
+        {% endfor %}
+      </div>
+      {% endif %}
+    </article>
+    {% endfor %}
+  </div>
+</div>

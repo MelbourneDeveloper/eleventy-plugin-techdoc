@@ -1,0 +1,62 @@
+{
+  "name": "eleventy-plugin-techdoc",
+  "version": "0.1.0",
+  "description": "Minimal structural Eleventy theme for tech documentation - no colors, no styling, just structure",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js"
+  },
+  "bin": {
+    "eleventy-plugin-techdoc": "./bin/init.js"
+  },
+  "scripts": {
+    "test": "playwright test"
+  },
+  "keywords": [
+    "eleventy",
+    "eleventy-plugin",
+    "eleventy-theme",
+    "11ty",
+    "theme",
+    "documentation",
+    "tech-docs",
+    "static-site",
+    "docs",
+    "blog"
+  ],
+  "author": "Christian Findlay <christian@melbournedeveloper.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/melbournedeveloper/dart_node/tree/main/techdoc#readme",
+  "bugs": {
+    "url": "https://github.com/melbournedeveloper/dart_node/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/melbournedeveloper/dart_node.git",
+    "directory": "techdoc"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "peerDependencies": {
+    "@11ty/eleventy": "^3.1.2"
+  },
+  "dependencies": {
+    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
+    "@11ty/eleventy-plugin-rss": "^2.0.2",
+    "@11ty/eleventy-navigation": "^0.3.5",
+    "@inquirer/prompts": "^7.0.0",
+    "markdown-it": "^14.1.0",
+    "markdown-it-anchor": "^9.2.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.40.0"
+  },
+  "files": [
+    "lib/",
+    "templates/",
+    "assets/",
+    "bin/"
+  ]
+}

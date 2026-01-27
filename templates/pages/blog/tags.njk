@@ -1,0 +1,30 @@
+---
+layout: layouts/base.njk
+title: Tags
+permalink: /blog/tags/
+---
+<div class="blog-container">
+  <header class="blog-header">
+    <h1>{{ "blog.tagsTitle" | t(lang) | default("Tags") }}</h1>
+    <p class="blog-subtitle">{{ "blog.tagsDescription" | t(lang) | default("Browse blog posts by tag.") }}</p>
+  </header>
+
+  <div class="tag-cloud">
+    {%- set tagCollection = collections.tagList %}
+    {%- if lang and lang != defaultLanguage %}
+      {%- set tagCollection = collections[lang + "tagList"] | default(collections.tagList) %}
+    {%- endif %}
+    {% for tag in tagCollection %}
+    <a href="{% if lang and lang != defaultLanguage %}/{{ lang }}{% endif %}/blog/tags/{{ tag | slugify }}/" class="tag-link">
+      {{ tag }}
+      <span class="tag-count">({{ collections.postsByTag[tag] | length | default(0) }})</span>
+    </a>
+    {% endfor %}
+  </div>
+
+  {% if tagCollection | length == 0 %}
+  <div class="blog-empty">
+    <p>{{ "blog.noTags" | t(lang) | default("No tags yet. Check back soon!") }}</p>
+  </div>
+  {% endif %}
+</div>

@@ -1,0 +1,25 @@
+---json
+{
+  "permalink": "llms.txt",
+  "eleventyExcludeFromCollections": true
+}
+---
+# {{ site.title | default(site.name) }}
+
+> {{ site.description }}
+
+## Documentation
+{% for page in collections.docs %}
+- [{{ page.data.title }}]({{ site.url }}{{ page.url }})
+{% endfor %}
+
+## Blog Posts
+{% for post in collections.posts | reverse | limit(10) %}
+- [{{ post.data.title }}]({{ site.url }}{{ post.url }})
+{% endfor %}
+
+## Navigation
+- Home: {{ site.url }}/
+- Documentation: {{ site.url }}/docs/
+- Blog: {{ site.url }}/blog/
+{% if techdocOptions.features.docs %}- API Reference: {{ site.url }}/api/{% endif %}
