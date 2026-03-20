@@ -122,6 +122,10 @@
   }
   </script>
 
+  <!-- Favicon -->
+  {% if site.favicon %}<link rel="icon" href="{{ site.favicon }}">{% endif %}
+  {% if site.appleTouchIcon %}<link rel="apple-touch-icon" href="{{ site.appleTouchIcon }}">{% endif %}
+
   <!-- Theme structural CSS (no colors) -->
   <link rel="stylesheet" href="/techdoc/css/reset.css">
   <link rel="stylesheet" href="/techdoc/css/layout.css">

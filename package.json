@@ -27,14 +27,13 @@
   ],
   "author": "Christian Findlay <christian@melbournedeveloper.com>",
   "license": "MIT",
-  "homepage": "https://github.com/melbournedeveloper/dart_node/tree/main/techdoc#readme",
+  "homepage": "https://github.com/MelbourneDeveloper/eleventy-plugin-techdoc#readme",
   "bugs": {
-    "url": "https://github.com/melbournedeveloper/dart_node/issues"
+    "url": "https://github.com/MelbourneDeveloper/eleventy-plugin-techdoc/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/melbournedeveloper/dart_node.git",
-    "directory": "techdoc"
+    "url": "git+https://github.com/MelbourneDeveloper/eleventy-plugin-techdoc.git"
   },
   "engines": {
     "node": ">=18"

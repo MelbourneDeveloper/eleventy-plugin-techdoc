@@ -336,7 +336,6 @@ function getCoreFiles(cssStyle, siteConfig = {}) {
     {
       title: 'More',
       items: [
-        { text: 'Dart Official', url: 'https://dart.dev' },
         { text: 'Eleventy', url: 'https://www.11ty.dev' }
       ]
     }
