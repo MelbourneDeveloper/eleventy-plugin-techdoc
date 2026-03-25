@@ -16,10 +16,13 @@ export function initMobileMenu() {
   const sidebar = document.querySelector('.sidebar, .docs-sidebar');
   if (!toggle) return;
 
+  const navLinks = document.querySelector('.nav-links');
+
   toggle.addEventListener('click', () => {
     const expanded = toggle.getAttribute('aria-expanded') === 'true';
     toggle.setAttribute('aria-expanded', !expanded);
     sidebar?.classList.toggle('open');
+    navLinks?.classList.toggle('open');
     document.body.classList.toggle('menu-open');
   });
 }
